@@ -1,16 +1,19 @@
 function [Wx,Wy,MSE]=trainMLP(E,Ce,S,Ta,alfa,X,D,epocaMax,MSETarget)
 
-%   E = Numero de entradas
-%   Ce = Numero de camadas escondidas
-%   S = Numero de saidas
-%   Ta = Taxa de aprendizado
-%   alfa = contante
+%E = Numero de entradas
+%Ce = Numero de camadas escondidas
+%S = Numero de saidas
+%Ta = Taxa de aprendizado
+%alfa = contante
  
 
 [p1 N] = size(X);
 bias = -1;
 
 X = [bias*ones(1,N) ; X];
+
+%Wx e Wy são pesos inicializados com valores aleatorios
+%MSETemp armazena os valores dos erros calculados pela subtração de D por Y
 
 Wx = rand(Ce,E+1);
 WxAnt = zeros(Ce,E+1);
